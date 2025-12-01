@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+input{
+    outline:none;
+}
+html,body{
+    height: 100%;
+}
+body{
+    display: flex;
+    background: linear-gradient(to right,pink,skyblue);
+}
+.box{
+    width: 1050px;
+    height: 600px;
+    display: flex;
+    position: relative;
+    /*background-color: rgb(251, 253, 253);*/
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.6);
+    box-shadow: 4px 4px 3px rgba(0,0,0,.1);
+}
+.pre-box{
+    width: calc(1050px /2);
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 20;
+    position: absolute;
+    border-radius: 4px;
+    background-color: #fbeaf1;
+    box-shadow:4px 4px 3px rgba(0,0,0,.1) ;
+    transition: 0.5s ease-in-out;
+}
+.pre-box h1{
+    margin-top: 80px;
+    text-align: center;
+    letter-spacing: 5px;
+    color: white;
+    text-shadow: 4px 4px 3px rgba(0,0,0,.1);
+}
+.pre-box p{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 20px 0;
+    color: rgb(255, 255, 255);
+    font-weight: bloc;
+    text-shadow: 4px 4px 3px rgba(0,0,0,.1);
+}
+.img-box{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+    border-radius: 30%;
+    overflow: hidden;
+    box-shadow:4px 4px 3px rgba(0,0,0,.1) ;
+}
+.img-box img{
+    width: 100%;
+    transition: 0.5s;
+}
+.login-form,.register-form{
+    flex: 1;
+    height: 100%;
+    z-index: 10;
+}
+.title-box{
+    height: 300px;
+    line-height: 500px;
+}
+.title-box h1{
+    text-align: center;
+    color: white;
+    letter-spacing: 5px;
+    text-shadow: 4px 4px 3px rgba(0,0,0,.1);
+}
+.input-box{
+    align-items: center;
+    position: relative;
+    left: 85px;
+}
+input{
+    width: 60%;
+    height: 40px;
+    margin-bottom: 20px;
+    text-indent: 30px;
+    border: 1px solid #b0cfe9;
+    border-radius: 6px;
+}
+input:focus::placeholder{
+    opacity: 0.2;
+}
+i{
+    position: relative;
+    left: 30px;
+    height: 30px;
+    color: rgb(186, 223, 237);
+}
+.button-box,.changepassword-box{
+    display: flex;
+    justify-content: center;
+}
+button{
+    width: 50px;
+    height: 30px;
+    margin: 0 7px;
+    line-height: 30px;
+    border: none;
+    border-radius: 6px;
+    background-color: #c8e5fc;
+    color: rgb(255, 255, 255);
+}
+button:hover{
+    cursor: pointer;
+    opacity: .7;
+}
+.button-box p{
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    color: white;
+}
+.button-box p:hover{
+    cursor: pointer;
+    border-bottom: 1px solid white;
+    text-shadow: 4px 4px 3px rgba(0,0,0,.1);
+}
+.changepassword-box a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}

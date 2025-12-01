@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆页面</title>
+    <link rel="stylesheet" href="./secondpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="pre-box">
+            <h1>欢迎</h1>
+            <p>加入我们</p>
+            <div class="img-box">
+                <img src="./xiaoxin.jpg" alt="">
+            </div>
+        </div>
+        <div class="register-form">
+            <div class="title-box">
+                <h1>注册</h1>
+            </div>
+            <div class="input-box">
+                <i class="fa-solid fa-phone"></i>
+                <input type="text" placeholder="手机号码"><br>
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="用户名"><br>
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="密码"><br>
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="确认密码">
+            </div>
+            <div class="button-box">
+                <button onclick="register()">注册</button>
+                <p onclick="imgswitch()">已有账号？去登录</p>
+            </div>
+        </div>
+        <div class="login-form">
+            <div class="title-box">
+                <h1>登录</h1>
+            </div>
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="用户名"><br>
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="密码">
+            </div>
+            <div class="button-box">
+                    <button onclick="login()">登录</button>
+                <p onclick="imgswitch()">没有账号？去注册</p>
+            </div>
+            <br>
+            <div class="changepassword-box">
+                <a href="./correctpassword.html">
+                    <p>忘记密码？去修改密码</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        let flag=true
+        const imgswitch=()=>{
+            if(flag){
+                $(".pre-box").css("transform","translateX(100%)")
+                $(".pre-box").css("background-color","rgb(201, 232, 255)")
+                $(".img").attr("src","./xiaoxin.jpg")
+            }else{
+                $(".pre-box").css("transform","translateX(0%)")
+                $(".pre-box").css("background-color","#edd4dc")
+                $(".img").attr("src","./xiaoxin.jpg")
+            }
+            flag=!flag
+        }
+    </script>
+    <script>
+        function login(){
+            const userName=document.querySelector('.login-form input[placeholder="用户名"]').value;
+            const password=document.querySelector('.login-form input[placeholder=密码]').value;
+
+            axios({
+                url:'http://localhost:8080/user/auth',
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                data:{
+                    Action:'login',
+                    UserName:userName,
+                    Password:password
+                }
+            })
+            .then(response=>{
+                const data=response.data;
+                if(data.msg=='登录失败，用户名/密码不正确!'){
+                    alert(data.msg);
+                }else{
+                    window.location.href = './welcome.html'
+                }
+            })
+            .catch(error=>{
+                alert('请求失败： '+(error.response?.data?.msg||error.message));
+            });
+        }
+    </script>
+    <script>
+         function register() {
+  const phone = document.querySelector('.register-form input[placeholder="手机号码"]').value;
+  const userName = document.querySelector('.register-form input[placeholder="用户名"]').value;
+  const password = document.querySelector('.register-form input[placeholder="密码"]').value;
+  const pwdConfirm = document.querySelector('.register-form input[placeholder="确认密码"]').value;
+
+  if (!/^1[3-9]\d{9}$/.test(phone)) { 
+    alert('请输入正确的手机号');
+    return;
+  }
+  if (userName.length < 2 || userName.length > 10) { 
+    alert('用户名需在2-10个字符之间');
+    return;
+  }
+  if (password.length < 6) {
+    alert('密码需至少6位');
+    return;
+  }
+  if (password !== pwdConfirm) { 
+    alert('两次输入的密码不一致');
+    return;
+  }
+
+  axios({
+    url: 'http://localhost:8080/user/auth', 
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    data: { 
+      Action: 'register', 
+      Phone: phone,
+      UserName: userName,
+      Password: password
+    }
+  })
+  .then(response => {
+    const res = response.data;
+    if (res.code === 200) { 
+      alert('注册成功！即将跳转到登录页');
+      window.location.href = './secondloginpage.html';
+    } else {
+      alert('注册失败：' + res.msg); 
+    }
+  })
+  .catch(error => {
+    const errorMsg = error.response?.data?.msg || '网络异常，请稍后再试';
+    alert('注册请求失败：' + errorMsg);
+  });
+}
+</script>
+</body>
+</html>

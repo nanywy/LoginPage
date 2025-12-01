@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    background: linear-gradient(to right,pink,skyblue);
+}
+.box{
+    width: 650px;
+    height: 400px;
+    border-radius: 20px;
+    display: flex;
+    position: relative;
+    margin: auto;
+    border: 1px solid rgba(255,255,255,.6);
+    box-shadow: 4px 4px 3px rgba(0,0,0,.1);
+   background-color: rgb(216, 229, 237);
+   top: 150px;
+}
+.pre-box{
+    color: white;
+    text-shadow: 4px 4px 3px rgba(0,0,0,.1);
+    position: relative;
+    top: 70px;
+    left: 260px;
+}
+.changepassword-box{
+    height: 100%;
+    flex: 1;
+    width: 100px;
+    position: relative;
+    margin: auto;
+    top: 150px;
+    left: 55px;
+}
+input{
+    width: 250px;
+    height: 30px;
+    text-indent: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #b0cfe9;
+    border-radius: 6px;
+    outline: none;
+}
+.input-box{
+    align-items: center;
+}
+input:focus::placeholder{
+    opacity: 0.2;
+}
+i{
+    position: relative;
+    left: 24px;
+    height: 5px;
+    color: rgb(184, 231, 250);
+}
+.button-box button{
+    height: 20px;
+    width: 50px;
+    border: 1px solid rgb(181, 217, 231);
+    border-radius: 5px;
+    background-color: rgb(184, 231, 250);
+    color: white;
+    cursor: pointer;
+    position: relative;
+    left: 120px;
+}
+button:hover{
+    background-color: rgb(209, 237, 248);
+    opacity: 7px;
+}
