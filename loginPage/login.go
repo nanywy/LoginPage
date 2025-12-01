@@ -54,6 +54,9 @@ func main() {
 		MaxAge:           12 * time.Hour,
 	}))
 
+	ginServer.StaticFS("/", http.Dir("."))
+	
+
 	ginServer.POST("/user/auth", func(context *gin.Context) {
 
 		var req struct {
