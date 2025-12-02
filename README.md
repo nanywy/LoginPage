@@ -49,4 +49,6 @@ go run loginPage/login.go
 
 # 验证后端
 
-打开浏览器访问 http://localhost:8080/page/secondpage/secondpage/secondloginpage.html，页面显示 {"status":"ok"} 即正常
+打开浏览器访问 http://localhost:8080/page/secondpage/secondpage/secondloginpage.html
+
+页面显示 {"status":"ok"} 即正常
